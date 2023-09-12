@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>太极图</title>
+		<style>
+			body{
+				background-color:#555555;
+			}
+			#taiji{
+				width: 400px;
+				height: 400px;
+				margin:100px auto;
+				/*background-color: green;*/
+				position: relative;
+				border-radius: 400px;
+				box-shadow:0 0 55px black;
+				/* transform: rotate(90deg); */
+				animation:rotation linear 5s infinite;
+			}
+			#taiji:before,#taiji:after{
+				width: 200px;
+				height: 400px;
+				display: block;
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				background-color: black;
+			}
+			#taiji:before{
+				left: 0;
+				background-color: black;
+				border-radius: 200px 0 0 200px;
+			}
+			#taiji:after{
+				left: 200px;
+				background-color: white;
+				border-radius: 0 200px 200px 0;
+			}
+			.circle1,.circle2{
+				width: 200px;
+				height: 200px;
+				position:absolute ;
+				border-radius:200px;
+				z-index: 10;
+			}
+			.circle1{
+				left: 100px;
+				top: 0;
+				background-color: black;
+			}
+			.circle2{
+				right: 100px;
+				bottom: 0;
+				background-color: white;
+			}
+			.circle1:before,.circle2:before{
+				width: 75px;
+				height: 75px;
+				display: block;
+				content: "";
+				position: absolute;
+				border-radius:75px;
+				z-index: 20;
+			}
+			.circle1:before{
+				left: 55px;
+				top: 60px;
+				background-color: white;
+			}
+			.circle2:before{
+				left: 55px;
+				bottom: 60px;
+				background-color: black;
+			}
+			@keyframes rotation{
+				0%{
+					transform:rotate(0deg);
+				}
+				100%{
+					transform:rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="taiji">
+			<div class="circle1">
+				
+			</div>
+			<div class="circle2">
+				
+			</div>
+		</div>
+	</body>
+</html>

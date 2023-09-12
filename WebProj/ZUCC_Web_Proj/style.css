@@ -1,0 +1,570 @@
+/*------------------------------------------实验六 轮播动画css -------------------------------------------------*/
+#content-wrapper{
+	padding: 10px 8px 26px 8px;
+}
+/* 左区 */
+#content-wrapper main{
+	width: 820px;
+	float: left;
+}
+/* 右区 */
+#content-wrapper aside{
+	width: 410px;
+	float: right;
+}
+/* 页脚导航 */
+#footer-wrapper{
+	clear: both;
+}
+
+/* 轮播广告————————————————此处，用css的轮播动画*/
+/* #adv{
+	width: 820px;
+	height: 369px;
+	background: no-repeat url("images/b-ad1.jpg") 0 0;
+	background-size: 820px 369px;
+	animation: lunbo 10s linear infinite;
+	position: relative;
+}
+
+#adv ul{
+	padding-left: 675px;
+	padding-top: 333px;
+	height: 30px;
+	width: 140px;
+	list-style: none;
+}
+
+#adv ul li {
+	float: left;
+	margin: 0 5px 6px 0;
+}
+
+#adv ul li span{
+	display: block;
+	width: 30px;
+	height: 30px;
+	font-size: 14px;
+	line-height: 30px;
+	text-align: center;
+	color: white;
+	border-radius: 30px;
+	background-color: #733f26;
+	position: relative;
+	z-index: 100;
+}
+
+#adv ul li:hover span{
+	background-color: #a67359;
+}
+
+#adv ul li:hover div {
+	width: 820px;
+	height: 369px;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size: 820px 369px;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+#adv ul li.lunbo1:hover div{
+	background-image: url(images/b-ad1.jpg);
+}
+
+#adv ul li.lunbo2:hover div{
+	background-image: url(images/b-ad2.jpg);
+}
+
+#adv ul li.lunbo3:hover div{
+	background-image: url(images/b-ad3.jpg);
+}
+
+#adv ul li.lunbo4:hover div{
+	background-image: url(images/b-ad4.jpg);
+}
+ */
+/* 轮播动画 */
+/* @keyframes lunbo{
+	0%{
+		background: url(images/b-ad1.jpg) no-repeat top left;
+		background-size: 820px 369px;
+	}
+	
+	25%{
+		background: url(images/b-ad2.jpg) no-repeat top left;
+		background-size: 820px 369px;
+	}
+	
+	50%{
+		background: url(images/b-ad3.jpg) no-repeat top left;
+		background-size: 820px 369px;
+	}
+	
+	75%{
+		background: url(images/b-ad4.jpg) no-repeat top left;
+		background-size: 820px 369px;
+	}
+	
+	100%{
+		background: url(images/b-ad1.jpg) no-repeat top left;
+		background-size: 820px 369px;
+	}
+} */
+
+/* ------------------------------实验七：叮叮书店首页布局样式设计（flex布局）---------------------------------------
+
+/* 公共 设计通用样式*/
+/* 清除所有元素默认内、外边距，默认字体是微软雅黑 */
+*{padding: 0px;margin: 0px; font-family: "微 软 雅 黑",Verdana,Arial,Helvetica,sans-serif;}
+/* 图像宽度设置为百分比，可以自动调整宽度，适应响应式web设计 */
+img{width: 100%;border:0px}
+/* 目前移动设备屏幕的最小宽度为260px，所以设置min-width为260px。maigin:0; auto表示整个页面内容自动居中 */
+.container{width: 100%;max-width: 1260px;min-width: 260px;margin: 0 auto;}
+/* 屏幕宽度大于420px，页面显示宽度为80% */
+@media screen and(min-width:420px) {
+	.container{width: 80%;}
+}
+
+/*布局 基于弹性伸缩盒，响应式web，内容区以两列显示*/
+/* 内容区水平方向伸缩，当达到最小宽度时换行，左边内容区的宽度是右边边栏区的两倍 */
+#content-wrapper{display: flex;flex-flow: row wrap;}
+main{flex: 2;margin: 0.5rem;min-width: 260px;}
+aside{flex: 1;margin: 0.5rem;min-width: 260px;}
+
+/* 局部布局 本周推荐封面图像和文字内容并列显示 */
+/* 本周推荐、最近新书、最近促销水平方向伸缩，达到最小宽度换行 */
+.recommend-book .content,#new .content,#sales .content{display: flex;flex-flow: row wrap;}
+
+/* 本周推荐图书封面和内容布局的空间分配 */
+.recommend-book .content .cover{flex: 1;min-width: 260px;}
+.recommend-book .content .description{flex: 2 ;margin-right:1rem;}
+
+/* 最近新书、最近促销内容按列方向伸缩*/
+.book{flex: 1;min-width: 260px;margin:0.5rem}
+.effect-1{display: flex;flex-flow: column;}
+
+/* 图书分类和合作伙伴水平方向伸缩 */
+#classify-partner{display: flex;}
+#classify{flex: 1;}
+#partner{flex: 1;}
+
+/* 最近新书和最近促销里的图像、“加入购物车详细内容”链接居中 */
+.effect-1 .image-box,.cart-more{display: flex; justify-content: center; }
+
+/* 显示版权信息的文字内容居中 */
+#copyright{height: 90px; display: none;flex-flow: column;justify-content: center;align-items: center;font-size: 1.1rem;}
+/* 宽度大于640px时显示版权信息 */
+@media screen and (min-width:640px){
+	#copyright{display: flex;}
+}
+
+/* 定义本周推荐里图书的下边框为实线 */
+.recommend-book{border-bottom: hsl(0,0%,80%) solid 1px; padding-bottom: 1rem;}
+/* 定义本周推荐、最近新书、最近促销、边栏广告、图书分类、和合作伙伴的下边框为虚线 */
+#recommend,#new,#sales,#best-selling,#classify-partner,#about,#advert{border-bottom: hsl(0,0%,80%) dashed 1px;margin-bottom: 1rem;
+padding-bottom: 1rem;}
+
+/* ----------------------------------------实验七 导航菜单-------------------------------------------------- */
+/* 页眉 */
+/* 背景图片 */
+header{ 
+	height: 150px;background-image: url(images/header.jpg);
+	position: relative;
+}
+/* 水平导航栏背景 */
+#nav {
+	background-image: url(images/navbg.jpg);
+}
+/* 水平导航菜单 */
+nav ul{display: flex; flex-flow:row wrap; justify-content: center;}
+/* 目前移动设备的最小屏幕宽度为320px,将菜单项最小宽度设为160px，能够保证在移动设备上一行最少显示两个菜单项 */
+nav ul li {min-width: 160px;}
+nav ul a{height: 60px; display: flex;align-items: center;justify-content: center;color:hsl(0,0%,100%);text-decoration: none;
+			font-size: 1.3rem; font-weight: normal; transition: background 0.5s linear;}
+nav ul a:hover{background-color: hsl(20,50%,30%);}
+
+/* 去掉小圆点 */
+#nav .container ul{
+	list-style: none;
+}
+/* iPhone 6 plus宽度为414px，大于这个宽度时菜单项将从左开始对齐 */
+@media screen and (min-width:414px) {
+	nav ul{justify-content: flex-start;}
+}
+
+/* 页脚 */
+/* 页脚导航栏背景 */
+#footer-wrapper{
+	background-image: url(images/navbg.jpg);
+}
+/* 页脚导航菜单 */
+footer ul{display: flex; flex-flow:row wrap; justify-content: center;}
+/* 目前移动设备的最小屏幕宽度为320px,将菜单项最小宽度设为160px，能够保证在移动设备上一行最少显示两个菜单项 */
+footer ul li {min-width: 130px;}
+footer ul a{height: 60px; display: flex;align-items: center;justify-content: center;color:hsl(0,0%,100%);text-decoration: none;
+			font-size: 1.3rem; font-weight: normal; transition: background 0.5s linear;}
+footer ul a:hover{background-color: hsl(20,50%,30%);}
+
+/* 去掉小圆点 */
+#footer-wrapper .container ul{
+	list-style: none;
+}
+/* iPhone 6 plus宽度为414px，大于这个宽度时菜单项将从左开始对齐 */
+@media screen and (min-width:414px) {
+	nav ul{justify-content: flex-start;}
+}
+
+
+/* ---------------------------实验八   叮叮书店首页的外观样式设计----------------------------------- */
+/* 文本 */
+h2{
+	font-size: 1.2rem;font-weight: normal;color: hsl(20,50%,30%);
+}
+/* h3标题内容居中 */
+h3{
+	font-size: 1.1rem;font-weight: normal;display: flex;justify-content: center;margin: 0.5rem 0;
+	color: hsl(20,50%,30%);
+}
+.recommend-book h3{
+	font-weight: bolder;
+}
+p a span{
+	font-size: 1rem;
+}
+/* 段落首行缩进两个字 分散对齐 */
+p{
+	text-indent: 2rem;text-align: justify;
+}
+/* 清除列表项标记 */
+ul{
+	list-style-type: none;
+}
+mark{
+	background-color: hsl(20,30%,50%);
+	color:hsl(0,0%,100%);
+}
+
+/* 栏目标题图标，引用多种格式，以满足不同设备和浏览器的需要 */
+/* 定义服务器端使用的图标字体 */
+@font-face{
+	font-family:'FontAwesome';
+	 src: url('fonts/fontawesome-webfont.eot?v=4.7.0');
+	 src: url('fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),
+	 url('fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),
+	 url('fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),
+	 url('fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),
+	 url('fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+	 font-weight: normal;
+	 font-style: normal;
+}
+/* 设置栏目标题图标样式 */
+.icon-book,.icon-sale,.icon-new,.icon-sell,.icon-classify,.icon-partner,.icon-about,.icon-cart,.icon-contact{
+	font-family: FontAwesome;
+	font-size: 1.5rem;
+	display: flex;
+	align-items: center;
+	float: left;
+	margin-right: 0.5rem;
+	font-weight: normal;
+	color: hsl(20,50%,30%);
+}
+
+/* 本周推荐标题图标 */
+.icon-book:before {content: "\f02d";}
+/* 最近新书标题图标 */
+.icon-new:before {content: "\f044";}
+/* 最近促销标题图标 */
+.icon-sale:before {content: "\f295";}
+/* 畅销图书标题图标 */
+.icon-sell:before {content: "\f073";}
+/* 图书分类标题图标 */
+.icon-classify:before {content: "\f022";}
+/* 合作伙伴标题图标 */
+.icon-partner:before {content: "\f2b5";}
+/* 关于书店标题图标 */
+.icon-about:before {content: "\f143";}
+/* 联系我们标题图标 */
+.icon-contact:before {content: "\f199";}
+
+/* 网站logo使用绝对定位 */
+#logo{position: absolute;top: 30px;left: 75px;}
+#logo a{font-size: 1.2rem;color: hsl(20,50%,30%);text-decoration: none;}
+#logo a h1{font-weight: normal;}
+/* 边栏广告图像的最小宽度为260px */
+#advert img{min-width: 260px;}
+/* 关于书店图像的最大宽度为120px */
+#about img{max-width: 120px;margin-bottom: 1rem;}
+#about .content{margin-top: 1rem;}
+
+/* ------------------------------实验十  叮叮书店首页超链接 伪类 动画样式设计；叮叮书店首页导航菜单设计。------------------------------------*/
+/* 购物车菜单的定位 */
+#nav nav{position: relative;}
+#cart {position: absolute; right: 0px; top: 10px; background-color: #F3F3F3; line-height: 40px; min-width: 120px; 
+	   display: none; justify-content: center;}
+/* 购物车标题图标 */
+.icon-cart:before{content: "\F07A";}
+/* 屏幕大于560px宽度时显示购物车 */
+@media screen and (min-width:560px){
+	#cart{display: flex;}
+}
+/* 购物车超链接样式 */
+#cart a,.icon-cart{color: hsl(20,50%,30%); text-decoration: none;font-size: 1.2rem; font-weight: normal;}
+#cart a:hover{color: hsl(20,30%,50%);} 
+
+/* 站内搜索 */
+#search{position: absolute; top: 114px; right: 0px;}
+#search input[type = "search"]{background-color: hsl(0,0%,95%); border: solid 1px; hsl(0,0%,85%);min-width: 260px; font-size: 1.1rem;}
+#search input[type="submit"]{background-color: hsl(0,0%,85%); color: hsl(20, 50%, 30%); border: solid 1px hsl(0,0%,85%);font-size: 1.1rem; padding: 0 10px;}
+
+/* 本周推荐图像样式 透明度改变*/
+#recommend img{opacity: 0.6;}
+#recommend img:hover{opacity: 1;transition: 2s;}
+
+/* 本周推荐、最近新书、最近促销 加入购物车、详细内容超链接样式变化  透明度 */
+.cart{text-decoration: none; background-color: hsl(20, 30%, 50%);color: hsl(0, 0%,100%); min-width: 120px; opacity: 0.7; display: flex;justify-content: center;
+height: 30px; align-items: center; padding-bottom: 2px; margin-right: 2px;}
+.cart:hover{text-decoration: none; opacity: 1;}
+.more{text-decoration: none; background-color: hsl(20, 30%, 50%);color: hsl(0, 0%,100%); min-width: 120px; opacity: 0.7; display: flex;justify-content: center;
+height: 30px; align-items: center; padding-bottom: 2px; }
+.more:hover{text-decoration: none; opacity: 1;}
+
+/* 图书分类和合作伙伴超链接样式 超链接文本没有下划线 鼠标悬停文字改变*/
+#classify li a,#partner li a{text-decoration: none;color: hsl(0, 0%, 0%);}
+#classify a:hover,#partner a:hover{text-decoration: none;color: hsl(20, 30%, 50%);}
+#classify ul,#partner ul{margin: 0.5rem 1rem;}
+
+/* 页脚超链接样式 */
+/* 页脚在之前设置页眉时已经设置 已稍作修改 以下设置版权信息 */
+#copyright a {text-decoration: none;color: hsl(0, 0%,0%);font-size: 1.1rem;margin: 0 0.5rem;}
+#copyright a:hover{text-decoration:none;color: hsl(20, 30%, 50%);}
+
+/* 最近新书变换样式 文字z-index设置为-1 置于图片下面 图片设置在Z轴上的角度变换*/
+#new .effect-1{position: relative;overflow: hidden;border: 1px solid hsl(0,0%,80%);perspective: 800px;}
+#new .effect-1:hover .image-box{transform: rotateX(75deg);transition: 1s;transform-origin: center bottom;}
+#new .text-desc{position: absolute;left: 0px;top: 0px;margin-bottom: 25px;padding: 10px;opacity: 0;z-index: -1;}
+#new .effect-1:hover .text-desc{opacity: 1;transition: 2s;}
+
+/* 最近促销变换样式 */
+#sales .text-desc{position: absolute;left: 0px;top: 0px;margin-bottom: 25px;padding: 10px;opacity: 0;z-index: -1;}
+#sales .effect-1{position: relative;overflow: hidden;border: 1px solid hsl(0,0%,80%);perspective: 800px;}
+#sales .effect-1:hover .image-box{transform: rotateY(180deg);transition: 1s;opacity: 0.2;}
+#sales .effect-1:hover .text-desc{opacity: 1;transition: 2s;}
+
+/* 畅销图书变换样式 列表项前加序号 图像和文字样式设计 以及鼠标悬停在列表项时的样式变化设计*/
+#best-selling ul{margin-top: 1rem;}
+#best-selling li:before{content: counter(listxh);background: hsl(20,30%,50%);padding: 2px 5px;color: hsl(0, 0%,100%);
+						margin-right: 5px;vertical-align: top;float: left;}
+/* 当行距长时，overflow：hidden为隐藏，white-space：nowrap为不换行，text-overflow：ellipsis为多的部分显示省略号 */
+#best-selling li{counter-increment: listxh;overflow: hidden;;white-space: nowrap;text-overflow: ellipsis;
+				margin-top: 8px;transition: text-shadow 1s linear;border-bottom: hsl(0, 0%, 80%) dashed 1px;max-width: 420px; }
+.p-img img{width: 80px;height: 80px;}
+#best-selling .curr .p-img{float: left;}
+#best-selling .curr .p-name strong{display: block;color: hsl(0, 100%, 50%);font-size: 1rem;}
+#best-selling .curr .p-name del{display: block;font-size: 1rem;}
+#best-selling .curr{display: none;}
+#best-selling a{color: hsl(0, 0%, 0%);text-decoration: none;font-size: 1rem;}
+#best-selling li:hover{text-shadow: 1px 4px 4px hsl(0,0%,0%);white-space: normal;}
+#best-selling li:hover .selling{display: none;}
+#best-selling li:hover .curr{display: block;}
+
+/* 多级菜单 */
+#nav nav ul li{position: relative;}
+#nav nav ul ul li{background-image: url("images/navbg.jpg");}
+#nav nav ul ul{visibility: hidden;position: absolute;left: -1px;background-image: url("images/navbg.jpg");}
+#nav nav ul li:hover ul{visibility: visible;z-index: 100;}
+
+/* ------------------------------------------实验十一 基于模板建立叮叮书店其他页面------------------------------------------------------- */
+/* 面包屑导航 */
+.crumb-nav{font-size: 1rem;margin: 5px 0px;}
+.crumb-nav a{text-decoration: none;font-size: 1em;color: hsl(0, 0%, 0%);}
+.crumb-nav a:hover{color: hsl(20, 30%, 50%);}
+
+/*书籍分类页面category.html */
+.list h2{margin: 20px 0px;}
+.list ul{
+	display: flex;
+	flex-flow: row wrap;
+}
+.list li {
+	flex: 1;
+	min-width: 160px;
+	margin: 10px;
+}
+.list li img{
+	border-radius: 5px;
+	transition: all 1s ease;
+	border: 1px solid hsl(20,50%,30%);
+}
+.list li:hover img{transform: scale(1.1);}
+/* 分页导航样式 */
+#bar{
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+}
+#bar a {
+	font-size: 1rem;text-decoration: none;
+	color: hsl(0, 0%, 100%);background-color: hsl(20,50%,30%);: inline-block;
+	width: 25px;height: 25px;
+	text-align: center;
+	color: hsl(0, 0%, 100%);
+	transition: all 0.5s ease;
+	padding-top: 3px;margin-right: 5px;
+}
+#bar a:hover {z-index: 100;opacity: 0.5;transform: scale(1.1);}
+
+/* 联系我们页面contact.html */
+.contacts{margin-top: 1rem;}
+.contacts p{padding: 10px;}
+.contact-form{
+	border: hsl(20, 50%, 30%) 1px dashed;
+	font-size: 1.1rem;
+	margin: 0 10px;
+}
+.form-subtitle{
+	background: hsl(20,50%,30%);color: hsl(0,0%,100%);
+	padding: 2px 5px;
+}
+.contact-input{
+	width: 300px;border: hsl(0,0%,80%) 1px solid;
+}
+.form-row {padding: 2px 10px;font-size: 1rem;}
+.form-row-button{margin: 5px;}
+.send{
+	color: hsl(0,0%,100%);
+	height: 30px;width: 60px;
+	text-align: center;background-color: hsl(20, 50%, 30%);
+	border: 0px;
+	font-size: 1rem;
+}
+
+/* 关于我们页面about.html */
+/* HTML5视频变成响应式 */
+video{max-width: 100%;height: auto;}
+#video p{margin: 10px 10px;}
+.video{text-align: center;}
+
+/* 购物车cart.html*/
+.cart-table h2{
+				margin: 1rem 0;
+			}
+			/* 合并边框 */
+			.cart-table table {
+				font-size: 1.2rem;
+				width: 100%;
+				border-collapse: collapse;
+				margin: 10px 0px;
+				color: hsl(0, 0%, 0%);
+			}
+			.cart-table tr,.cart-table td{
+				border: 1px solid hsl(20, 30%, 50%);
+			}
+			.cart-table td h3{
+				font-size: 1.2rem;
+				color: hsl(0, 0%, 0%);
+			}
+			.cart-table img{
+				width: 60px;
+				height:60px;
+			}
+			.cart-table td:first-child{
+				text-align: center;
+			}
+			.cart-table td:nth-child(5),.cart-table td:nth-child(4),.cart-table td:nth-child(3){
+				text-align: right;padding-right: 5px;
+			}
+			.cart-table tr:last-child a{
+				color: hsl(0, 20%, 30%);
+				font-size: 1.1rem;
+				text-decoration: none;
+				margin-left: 20px;
+			}
+			/* .cart-table td:nth-child(2){
+				text-align: center;
+			} */
+			.cart-table tr:last-child a :hover{
+				color: hsl(0, 0%, 100%);
+			}
+			/* 第一行和最后一行背景色*/
+			.cart-table tr:first-child,.cart-table tr:last-child{
+				background-color: hsl(20, 30%, 50%);
+				line-height:40px;
+				text-align: center;
+				color: hsl(0, 0%, 100%);
+			}
+			
+
+/* -----------------------------------------实验十三  叮叮书店首页显示日期和时间-------------------------------------- */
+/* 日期时间 */
+#date{
+	position: absolute;
+	top: 20px;right: 260px;
+	color: hsl(0,0%,100%);
+	display: none;
+}
+#time{
+	position: absolute;
+	top: 21px;right: 170px;
+	color: hsl(0,0%,100%);
+	display: none;
+}
+/* 大于1500px宽度时显示时期和时间 */
+@media screen and (min-width:150px){
+	#date,#time{display: block;}
+}
+
+/* -----------------------------------------实验十四  叮叮书店首页轮播广告------------------------------------- */
+/* 横幅广告 */
+#adv {
+	position: relative;
+	margin-bottom: 0.5rem;
+}
+#adv dl,#adv dd {list-style: none;}
+#adv dt {
+	position: absolute;
+	bottom: 10px;right: 5px;
+	display: flex;
+}
+#adv dd {
+	overflow: hidden;
+}
+#adv dl dt a {
+	display: flex;justify-content: center;align-items: center;
+	width: 24px;height: 24px;
+	padding: 0 1px 1px 0;
+	border-radius: 15px;
+	margin-right: 5px;
+	background-color: hsl(20,50%,30%);color: hsl(0,0%,100%);
+	text-decoration: none;
+	font-size: 0.8rem;
+}
+
+/* -----------------------------------------实验十五  叮叮书店联系我们页面表单数据验证------------------------------------- */
+#message{visibility: hidden;}
+#submitmessage{padding: 5px 10px;}
+
+/* -----------------------------------------实验十六  书籍分类页面拖放图书到购物车------------------------------------- */
+/* category页面 购物车样式 */
+#ulcart{width: 100%;margin: 10px 0px;}
+#ulcart .lit{
+	background-color: hsl(20,30%,50%);
+	color: hsl(0,0%,100%);
+	padding: 5px 0px;
+}
+#ulcart li{
+	display: flex;
+	flex-flow: row wrap; 
+}
+#ulcart span{
+	text-align: center;
+}
+#ulcart span:nth-child(1){flex: 3;}
+#ulcart span:nth-child(2){flex: 1;}
+#ulcart span:nth-child(3){flex: 1;}
+#ulcart span:nth-child(4){flex: 1;}
+#ulcart .lic{
+	border-bottom:1px solid hsl(20,30%,50%); 
+}
+	
