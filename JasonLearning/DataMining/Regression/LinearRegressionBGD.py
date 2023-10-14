@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文标签
 plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
-path = 'C:\\Users\\zheng_dpjpzv5\\Desktop\\02-线性回归分析\\02-回归\\data\\regress_data1.csv'
+path = "F:\\A_MyWork\\大三课程相关\\数据挖掘\\02-线性回归分析\\02-回归\\data\\traindata.csv"
 data = pd.read_csv(path)
 # print(data.head())    
 
@@ -69,16 +69,20 @@ def batch_gradientDescent(X, y, w, alpha, count):
     # 返回最终的权重向量和代价函数值列表
     return w, costs
 
+# 特征归一化
+data = (data - data.mean()) / data.std()#标准化数据
+# print(data.head())
+
 #将一列名为'Ones'的值全为1的列插入到data的第一列位置。以便我们可以使用向量化的解决方案来计算代价和梯度。
 data.insert(0, 'Ones', 1)
 # print(data.head())
 
 #做一些数据初始化
 cols = data.shape[1]  # 获取data的列数
-X = data.iloc[:,:cols-1]  # 获取除最后一列外的所有列作为特征矩阵X（ones,人口）  
-y = data.iloc[:,cols-1:]  # 获取最后一列作为目标变量y  (收益)
-# print(X.head())
-# print(y.head())
+X = data.iloc[:,:cols-1]  # 获取除最后一列外的所有列作为特征矩阵X（Size:50*501）  
+y = data.iloc[:,cols-1:]  # 获取最后一列作为目标变量y  (Y:50*1)
+print(X.head())
+print(y.head())
 
 # 转化X，y，初始化w
 X = X.values
@@ -88,7 +92,7 @@ w = np.zeros((X.shape[1], 1))
 
 # 计算初始代价函数 j0
 j0 = computeCost(X, y, w)
-# print(j)
+# print(j0)
 
 # 设置学习速率和迭代次数
 alpha = 0.01
@@ -119,15 +123,15 @@ print(j1)
 # # 显示图形
 # plt.show()
 
-# # 每一百次损失变化
-# # 创建图形和轴对象
-# fig, ax = plt.subplots(figsize=(12, 8))
-# # 绘制代价随迭代次数的变化曲线
-# ax.plot(np.arange(iters), cost, 'r')
-# # 设置x轴和y轴标签
-# ax.set_xlabel('迭代次数', fontsize=18)
-# ax.set_ylabel('代价', rotation=0, fontsize=18)
-# # 设置图标题
-# ax.set_title('误差和训练Epoch数', fontsize=18)
-# # 显示图形
-# plt.show()
+# 每一百次损失变化
+# 创建图形和轴对象
+fig, ax = plt.subplots(figsize=(12, 8))
+# 绘制代价随迭代次数的变化曲线
+ax.plot(np.arange(iters), cost, 'r')
+# 设置x轴和y轴标签
+ax.set_xlabel('迭代次数', fontsize=18)
+ax.set_ylabel('代价', rotation=0, fontsize=18)
+# 设置图标题
+ax.set_title('误差和训练Epoch数', fontsize=18)
+# 显示图形
+plt.show()
