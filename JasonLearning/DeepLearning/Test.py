@@ -1,9 +1,10 @@
-import tensorflow as tf
-tf.compat.v1.disable_eager_execution()
+import tensorflow.compat.v1 as tf
+tf.disable_eager_execution()
 
-hello = tf.constant('Hello, TensorFlow!')
-sess = tf.compat.v1.Session()
-print(sess.run(hello))
-a = tf.constant(10)
-b = tf.constant(32)
-print(sess.run(a+b))
+ten=tf.constant([[[1,2],[2,3]],[[3,4],[5,6]]])
+
+sess=tf.Session()
+
+print(sess.run(ten)[1,0,0])
+
+sess.close()
