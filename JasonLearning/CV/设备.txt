@@ -1,0 +1,4 @@
+硬件环境：
+CPU：AMD Ryzen 7 5800H with Radeon Graphics            3.20 GHz 内存：16G 硬盘：256G OS：win11专业版 
+使用软件：
+VScode 

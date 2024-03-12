@@ -13,6 +13,7 @@ class WordleDynamic(object):
         # need to be optimized
         self.all_users = 15000000
         self.twitter_rate = 0.25
+        
         self.twitter_spread_rate = 3.2
         self.new_player_rate = 0.2
         self.old_player_rate = 0.1

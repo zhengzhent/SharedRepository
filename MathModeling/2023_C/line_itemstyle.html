@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Awesome-pyecharts</title>
+    <script
+      type="text/javascript"
+      src="https://assets.pyecharts.org/assets/v5/echarts.min.js"></script>
+  </head>
+  <body>
+    <div
+      id="23f6752468824eafa07c0eada911ffc3"
+      class="chart-container"
+      style="width: 900px; height: 500px"></div>
+    <script>
+      var chart_23f6752468824eafa07c0eada911ffc3 = echarts.init(
+        document.getElementById('23f6752468824eafa07c0eada911ffc3'),
+        'white',
+        { renderer: 'canvas' },
+      )
+      var option_23f6752468824eafa07c0eada911ffc3 = {
+        animation: true,
+        animationThreshold: 2000,
+        animationDuration: 1000,
+        animationEasing: 'cubicOut',
+        animationDelay: 0,
+        animationDurationUpdate: 300,
+        animationEasingUpdate: 'cubicOut',
+        animationDelayUpdate: 0,
+        aria: {
+          enabled: false,
+        },
+        color: [
+          '#5470c6',
+          '#91cc75',
+          '#fac858',
+          '#ee6666',
+          '#73c0de',
+          '#3ba272',
+          '#fc8452',
+          '#9a60b4',
+          '#ea7ccc',
+        ],
+        series: [
+          {
+            type: 'line',
+            name: 'Frequency',
+            connectNulls: false,
+            xAxisIndex: 0,
+            symbol: 'triangle',
+            symbolSize: 20,
+            showSymbol: true,
+            smooth: false,
+            clip: true,
+            step: false,
+            data: [
+              ['a', 0.0881],
+              ['b', 0.0173],
+              ['c', 0.0396],
+              ['d', 0.0301],
+              ['e', 0.1026],
+              ['f', 0.0184],
+              ['g', 0.0284],
+              ['h', 0.039],
+              ['i', 0.0563],
+              ['j', 0.0022],
+              ['k', 0.0195],
+              ['l', 0.0625],
+              ['m', 0.0307],
+              ['n', 0.0491],
+              ['o', 0.0742],
+              ['p', 0.0357],
+              ['q', 0.0028],
+              ['r', 0.0747],
+              ['s', 0.0485],
+              ['t', 0.0725],
+              ['u', 0.0357],
+              ['v', 0.0139],
+              ['w', 0.0167],
+              ['x', 0.0045],
+              ['y', 0.034],
+              ['z', 0.0028],
+            ],
+            hoverAnimation: true,
+            label: {
+              show: true,
+              margin: 8,
+            },
+            logBase: 10,
+            seriesLayoutBy: 'column',
+            lineStyle: {
+              show: true,
+              width: 4,
+              opacity: 1,
+              curveness: 0,
+              type: 'dashed',
+              color: 'green',
+            },
+            areaStyle: {
+              opacity: 0,
+            },
+            itemStyle: {
+              color: 'blue',
+              borderColor: 'yellow',
+              borderWidth: 3,
+            },
+            zlevel: 0,
+            z: 0,
+          },
+        ],
+        legend: [
+          {
+            data: ['Frequency'],
+            selected: {},
+            show: true,
+            padding: 5,
+            itemGap: 10,
+            itemWidth: 25,
+            itemHeight: 14,
+            backgroundColor: 'transparent',
+            borderColor: '#ccc',
+            borderWidth: 1,
+            borderRadius: 0,
+            pageButtonItemGap: 5,
+            pageButtonPosition: 'end',
+            pageFormatter: '{current}/{total}',
+            pageIconColor: '#2f4554',
+            pageIconInactiveColor: '#aaa',
+            pageIconSize: 15,
+            animationDurationUpdate: 800,
+            selector: false,
+            selectorPosition: 'auto',
+            selectorItemGap: 7,
+            selectorButtonGap: 10,
+          },
+        ],
+        tooltip: {
+          show: true,
+          trigger: 'item',
+          triggerOn: 'mousemove|click',
+          axisPointer: {
+            type: 'line',
+          },
+          showContent: true,
+          alwaysShowContent: false,
+          showDelay: 0,
+          hideDelay: 100,
+          enterable: false,
+          confine: false,
+          appendToBody: false,
+          transitionDuration: 0.4,
+          textStyle: {
+            fontSize: 14,
+          },
+          borderWidth: 0,
+          padding: 5,
+          order: 'seriesAsc',
+        },
+        xAxis: [
+          {
+            show: true,
+            scale: false,
+            nameLocation: 'end',
+            nameGap: 15,
+            gridIndex: 0,
+            inverse: false,
+            offset: 0,
+            splitNumber: 5,
+            minInterval: 0,
+            splitLine: {
+              show: true,
+              lineStyle: {
+                show: true,
+                width: 1,
+                opacity: 1,
+                curveness: 0,
+                type: 'solid',
+              },
+            },
+            data: [
+              'a',
+              'b',
+              'c',
+              'd',
+              'e',
+              'f',
+              'g',
+              'h',
+              'i',
+              'j',
+              'k',
+              'l',
+              'm',
+              'n',
+              'o',
+              'p',
+              'q',
+              'r',
+              's',
+              't',
+              'u',
+              'v',
+              'w',
+              'x',
+              'y',
+              'z',
+            ],
+          },
+        ],
+        yAxis: [
+          {
+            show: true,
+            scale: false,
+            nameLocation: 'end',
+            nameGap: 15,
+            gridIndex: 0,
+            inverse: false,
+            offset: 0,
+            splitNumber: 5,
+            minInterval: 0,
+            splitLine: {
+              show: true,
+              lineStyle: {
+                show: true,
+                width: 1,
+                opacity: 1,
+                curveness: 0,
+                type: 'solid',
+              },
+            },
+          },
+        ],
+        title: [
+          {
+            show: true,
+            text: '',
+            target: 'blank',
+            subtarget: 'blank',
+            padding: 5,
+            itemGap: 10,
+            textAlign: 'auto',
+            textVerticalAlign: 'auto',
+            triggerEvent: false,
+          },
+        ],
+      }
+      chart_23f6752468824eafa07c0eada911ffc3.setOption(
+        option_23f6752468824eafa07c0eada911ffc3,
+      )
+    </script>
+  </body>
+</html>
